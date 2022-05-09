@@ -35,7 +35,7 @@
 ```
 * Deploy
 
-4. Send around 5 link tokens to the deployed APIConsumer contract
+4. Send around 5 link tokens to the deployed APIConsumer contract. Get link from [faucet](https://faucets.chain.link/kovan)
 
 5. Get your vehicleID and encryptedToken:
 
