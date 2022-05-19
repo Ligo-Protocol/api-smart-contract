@@ -1,4 +1,26 @@
-# How to use
+# QuickStart
+
+1. Get the vehicleID from here:
+
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/vehicles
+```
+
+2. Get the encToken from here:
+
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/token
+```
+
+3. Open [remix](https://remix.ethereum.org)
+
+4. Compile [APIConsumerAll.sol](https://github.com/Ligo-Protocol/api-smart-contract/blob/main/APIConsumerAll.sol)
+
+5. In `fulfilldistanceAndlatitudeAndlongitude` function, enter your vehicleID and encToken
+
+6. In like 5-10 seconds, click on _endLatitude, _endLongitude and _endOdometer to check the values ..
+
+# How to use from the beginning
 
 1. Open [remix](https://remix.ethereum.org)
 

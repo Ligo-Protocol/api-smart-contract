@@ -23,7 +23,7 @@ observationSource = """
 \tlong_multiply      [type="multiply" input="$(longitude_parse)", times="1000000000000000"]
 
     encode_mwr [type="ethabiencode"
-                abi="(bytes32 requestId, uint256 _distance, uint256 _latitude, uint256 _longitude)"
+                abi="(bytes32 requestId, uint256 _distance, int256 _latitude, int256 _longitude)"
                 data="{\\"requestId\\": $(decode_log.requestId), \\"_distance\\": $(dist_multiply), \\"_latitude\\": $(lat_multiply), \\"_longitude\\": $(long_multiply)}"
                 ]
     encode_tx  [type="ethabiencode"
@@ -34,3 +34,4 @@ observationSource = """
 
 \tdecode_log -> decode_cbor -> fetch -> parse -> dist_multiply -> latitude_parse -> lat_multiply -> longitude_parse -> long_multiply -> encode_mwr -> encode_tx -> submit_tx
 """
+externalJobID = "65f26cc6-9fe2-454e-acf1-29aef846e65a"
