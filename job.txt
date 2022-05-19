@@ -1,0 +1,36 @@
+type = "directrequest"
+schemaVersion = 1
+name = "lastjob"
+contractAddress = "0x89dca850F3C3BF8fB0209190CD45e4a59632C73D"
+maxTaskDuration = "0s"
+observationSource = """
+    decode_log   [type="ethabidecodelog"
+                  abi="OracleRequest(bytes32 indexed specId, address requester, bytes32 requestId, uint256 payment, address callbackAddr, bytes4 callbackFunctionId, uint256 cancelExpiration, uint256 dataVersion, bytes data)"
+                  data="$(jobRun.logData)"
+                  topics="$(jobRun.logTopics)"]
+    decode_cbor  [type="cborparse" data="$(decode_log.data)"]
+
+\tfetch        [type="bridge" name="ligo" requestData="{\\"id\\":$(jobSpec.externalJobID), \\"data\\" : {\\"vehicleId\\": $(decode_cbor.vehicleId) , \\"encToken\\": $(decode_cbor.encToken) }}"]
+   
+    parse        [type="jsonparse" path="data,distance" data="$(fetch)"]
+\tdist_multiply     [type="multiply" input="$(parse)", times="1000000000000000"]
+
+
+    latitude_parse    [type="jsonparse" path="data,latitude" data="$(fetch)"]
+\tlat_multiply      [type="multiply" input="$(latitude_parse)", times="1000000000000000"]
+
+    longitude_parse    [type="jsonparse" path="data,longitude" data="$(fetch)"]
+\tlong_multiply      [type="multiply" input="$(longitude_parse)", times="1000000000000000"]
+
+    encode_mwr [type="ethabiencode"
+                abi="(bytes32 requestId, uint256 _distance, uint256 _latitude, uint256 _longitude)"
+                data="{\\"requestId\\": $(decode_log.requestId), \\"_distance\\": $(dist_multiply), \\"_latitude\\": $(lat_multiply), \\"_longitude\\": $(long_multiply)}"
+                ]
+    encode_tx  [type="ethabiencode"
+                abi="fulfillOracleRequest2(bytes32 requestId, uint256 payment, address callbackAddress, bytes4 callbackFunctionId, uint256 expiration, bytes calldata data)"
+                data="{\\"requestId\\": $(decode_log.requestId), \\"payment\\":   $(decode_log.payment), \\"callbackAddress\\": $(decode_log.callbackAddr), \\"callbackFunctionId\\": $(decode_log.callbackFunctionId), \\"expiration\\": $(decode_log.cancelExpiration), \\"data\\": $(encode_mwr)}"
+                ]
+    submit_tx  [type="ethtx" to="0x89dca850F3C3BF8fB0209190CD45e4a59632C73D" data="$(encode_tx)"]
+
+\tdecode_log -> decode_cbor -> fetch -> parse -> dist_multiply -> latitude_parse -> lat_multiply -> longitude_parse -> long_multiply -> encode_mwr -> encode_tx -> submit_tx
+"""
