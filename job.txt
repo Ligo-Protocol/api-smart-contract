@@ -2,6 +2,7 @@ type = "directrequest"
 schemaVersion = 1
 name = "lastjob"
 contractAddress = "0x89dca850F3C3BF8fB0209190CD45e4a59632C73D"
+minContractPaymentLinkJuels = 0
 maxTaskDuration = "0s"
 observationSource = """
     decode_log   [type="ethabidecodelog"
