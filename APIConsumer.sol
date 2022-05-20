@@ -33,10 +33,6 @@ constructor(address _oracle, string memory _jobId, uint256 _fee, address _link) 
     fee = _fee;
 }
 
-/**
- * Create a Chainlink request to retrieve API response, find the target
- * data, then multiply by 1000000000000000000 (to remove decimal places from data).
- */
 function requestVolumeData(string memory _vehicleId, string memory _encToken) public returns (bytes32 requestId) 
 {
     Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
