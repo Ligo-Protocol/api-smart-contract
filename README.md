@@ -1,4 +1,26 @@
-# QuickStart
+# QuickStart(Only Odometer)
+
+1. Get the vehicleID from here:
+
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/vehicles
+```
+
+2. Get the encToken from here:
+
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/token
+```
+
+3. Open [remix](https://remix.ethereum.org)
+
+4. Compile [APIConsumer.sol](https://github.com/Ligo-Protocol/api-smart-contract/blob/main/APIConsumer.sol)
+
+5. In `fulfill` function, enter your vehicleID and encToken
+
+6. In like 5-10 seconds, click on _endOdometer to check the values ..
+
+# QuickStart(All)
 
 1. Get the vehicleID from here:
 
