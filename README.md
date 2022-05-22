@@ -52,7 +52,7 @@ https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmP
 
 * Set the Oracle address you mentioned in your Job
 * Set the Job ID by checking the 'externalJobID' in JobSpec of your Job. Remove the dashes in between and cover it with "". Example "29fa9aa13bf1468788b7cc4a500a45b8"
-* Set fee 1000000000000000000
+* Set fee 0
 * Set Kovan address link:
 
 ```
@@ -60,18 +60,11 @@ https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmP
 ```
 * Deploy
 
-4. Send around 5 link tokens to the deployed APIConsumer contract. Get link from [faucet](https://faucets.chain.link/kovan)
+4. Get your vehicleID and encryptedToken:
 
-5. Get your vehicleID and encryptedToken:
 
-* Authorize using the [frontend](https://github.com/Ligo-Protocol/chainlink-hackathon-2022-client)
-* Login to moralis and get your vehicleID
-* Get your encrypted token using:
-```
-curl https://ligo-node-4etzx.ondigitalocean.app/api/v0/smartcar/vehicles/<your-vehicle-id-here>/token
-```
 
-6. Enter your vehicleID and encryptedToken as string in `requestVolumeData` function and run it
+5. Enter your vehicleID and encryptedToken as string in `requestVolumeData` function and run it
 
 7. Click on `fulfill` function to get your required data.
 
