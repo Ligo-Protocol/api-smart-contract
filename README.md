@@ -62,7 +62,12 @@ https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmP
 
 4. Get your vehicleID and encryptedToken:
 
-
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/vehicles
+```
+```
+https://ligo-node.oort.codyhatfield.me/api/v0/smartcar/users/wXP24CpYWJGW5lqKCmPB8RTH/token
+```
 
 5. Enter your vehicleID and encryptedToken as string in `requestVolumeData` function and run it
 
