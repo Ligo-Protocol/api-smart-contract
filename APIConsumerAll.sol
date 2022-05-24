@@ -48,9 +48,9 @@ contract MultiVariableRequest is ChainlinkClient, ConfirmedOwner {
     public
     recordChainlinkFulfillment(requestId)
   {
-    _endOdometer = _distance/1000000000000000;
-    _endLatitude = _latitude/1000000000000000;
-    _endLongitude = _longitude/1000000000000000;
+    _endOdometer = _distance/1000;
+    _endLatitude = _latitude/10000;
+    _endLongitude = _longitude/10000;
     /* // For decimals
     _endOdometerDecimal = _distance%1000000000000000;
     _endLatitudeDecimal = _latitude%1000000000000000;
