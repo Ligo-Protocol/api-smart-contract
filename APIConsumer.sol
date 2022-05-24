@@ -8,6 +8,7 @@ contract APIConsumer is ChainlinkClient {
 
 
 uint256 public _endOdometer;
+uint256 public OdometerDecimal;
 
 address private link;
 address private oracle;
@@ -49,7 +50,8 @@ function requestVolumeData(string memory _vehicleId, string memory _encToken) pu
  */ 
 function fulfill(bytes32 _requestId, uint256 _distance) public recordChainlinkFulfillment(_requestId)
 {
-    _endOdometer = _distance;
+    _endOdometer = _distance/1000;
+    OdometerDecimal = _distance%1000;
 }
 
 function stringToBytes32(string memory source) public pure returns (bytes32 result) {
